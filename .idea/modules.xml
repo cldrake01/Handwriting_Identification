@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Kubernetes_Deployment.iml" filepath="$PROJECT_DIR$/.idea/Kubernetes_Deployment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ctech_land_acquisition.iml" filepath="$PROJECT_DIR$/.idea/ctech_land_acquisition.iml" />
     </modules>
   </component>
 </project>
