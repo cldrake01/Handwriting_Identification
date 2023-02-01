@@ -1,3 +1,3 @@
-# ctech_land_acquisition
+# ctech_land_acquisition Step-By-Step:
 
-#### To use this repository, change the csv_path varriable to the local path of the csv that you'd like to process.
+### 1. The aptly named `csv_path` varriable represents the location of the CSV file that you'd like to process. 
