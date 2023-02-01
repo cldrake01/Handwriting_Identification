@@ -6,10 +6,10 @@ import csv
 
 
 class Scribe:
-    table = ["Primary Owner", "APN/PIN", "Name", "Primary Owner Last Name", "Primary Owner First Name", "Site Address",
-             "City", "State", "Zip", "Acreage (Deeded)", "Acreage (Calc)", "Name", "Name",
-             "Total Acres - Same Land Owner", "Owner", "City", "County", "State", "Zip Code", "Company Name",
-             "Street Address", "City", "State", "Zip", "Muni Id", "Muni Name", "Buildable Area (Acres)", "Notes"]
+    # table = ["Primary Owner", "APN/PIN", "Name", "Primary Owner Last Name", "Primary Owner First Name",
+    # "Site Address", "City", "State", "Zip", "Acreage (Deeded)", "Acreage (Calc)", "Name", "Name", "Total Acres -
+    # Same Land Owner", "Owner", "City", "County", "State", "Zip Code", "Company Name", "Street Address", "City",
+    # "State", "Zip", "Muni Id", "Muni Name", "Buildable Area (Acres)", "Notes"]
 
     def __init__(self, csv_path: str, client_params: str):
         self.csv_path = csv_path
