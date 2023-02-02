@@ -1,9 +1,7 @@
 from __future__ import print_function
-
-import sys
-
 from pydrive2.drive import GoogleDrive
 from pydrive2.auth import GoogleAuth
+import tkinter as tk
 import openai
 import csv
 
@@ -97,36 +95,95 @@ class Scribe:
         return response['choices'][0]['text']
 
 
-email_client = Scribe(csv_path="/Users/collindrake/Downloads/export.csv",
-                      client_params="Write me a letter to inquire with a landowner about buying or leasing their "
-                                    "property for a potential solar farm. If the owner's name is not present, use their"
-                                    " company's name instead; if the company's name is also unavailable, address the "
-                                    "recipient with 'To the owner of (property address). Your letter should closely "
-                                    "mirror the example provided below:"
-                                    "Holland, Ware M2797 W Sugarberry Dr Eagle ID, 83616 December 9, 2022 Subject: "
-                                    "Intent to Lease Land for CTEC Solar Newnan GA,30263 ; Parcel ID: 039 3006 002 & "
-                                    "surrounding properties Dear Holland, I am contacting you today about a proposal "
-                                    "to lease several pieces of the property you own in Newnan Ga, 30263  for a "
-                                    "community solar project. They are currently listed under Ware Holland M "
-                                    "Charitable Foundation. I believe there are a total of 4 parcels you have in the "
-                                    "area that we would be interested in speaking with you about. We are currently "
-                                    "invested in solar projects in your area and we are looking to expand.  CTEC "
-                                    "Solar not only develops renewable-energy projects, but also constructs, "
-                                    "operates, and maintains them. In fact, CTEC is the company the other solar "
-                                    "companies often call to build their projects for them. Making it work for you: "
-                                    "Landowners receive upfront payments and operating rent. Solar farms can pay rent "
-                                    "checks for 20+ years. Leasing your land for a solar farm allows you and your "
-                                    "family to generate income from your land, while also holding onto the property "
-                                    "and income stream for future generations. Solar farms generate zero emissions "
-                                    "and are non hazardous. Solar farms create jobs and tax revenue. Currently, "
-                                    "there is limited availability in most areas to connect projects due to high "
-                                    "levels of interest among property owners and limited capacity for solar projects "
-                                    "within the power grid. Because of these factors, I encourage you to reach out to "
-                                    "me ASAP to discuss this proposal. We assume the costs of development and "
-                                    "permitting at our own risk. I would appreciate an opportunity to speak with you "
-                                    "so that I may answer any questions and gauge your potential interest.  Please "
-                                    "respond by calling my cell at (678) 898-6315 when you receive this. You may also "
-                                    "text my cell phone or email me at the address below. Sincerely, Warren Kritko "
-                                    "Project Developer mob: 678-898-6315 Warren.Kritko@ctecsolar.com '",)
+class GUI:
+    def __init__(self, master):
+        self.master = master
+        self.root = tk.Tk
+        self.master.title("Scribe")
+        self.label = tk.Label(self.master, text="Enter CSV Path")
+        self.label.pack()
 
-email_client.getPropertyData()
+        self.entry = tk.Entry(self.master)
+        self.entry.pack()
+
+        self.run_button = tk.Button(self.master, text="Run", command=self.run)
+        self.run_button.pack()
+
+        self.quit_button = tk.Button(self.master, text="Quit", command=self.master.quit)
+        self.quit_button.pack()
+
+    def run(self):
+        Scribe(csv_path=self.entry.get(),
+               client_params="Write me a letter to inquire with a landowner about buying or leasing their "
+                             "property for a potential solar farm. If the owner's name is not present, use their"
+                             " company's name instead; if the company's name is also unavailable, address the "
+                             "recipient with 'To the owner of (property address). Your letter should closely "
+                             "mirror the example provided below:"
+                             "Holland, Ware M2797 W Sugarberry Dr Eagle ID, 83616 December 9, 2022 Subject: "
+                             "Intent to Lease Land for CTEC Solar Newnan GA,30263 ; Parcel ID: 039 3006 002 & "
+                             "surrounding properties Dear Holland, I am contacting you today about a proposal "
+                             "to lease several pieces of the property you own in Newnan Ga, 30263  for a "
+                             "community solar project. They are currently listed under Ware Holland M "
+                             "Charitable Foundation. I believe there are a total of 4 parcels you have in the "
+                             "area that we would be interested in speaking with you about. We are currently "
+                             "invested in solar projects in your area and we are looking to expand.  CTEC "
+                             "Solar not only develops renewable-energy projects, but also constructs, "
+                             "operates, and maintains them. In fact, CTEC is the company the other solar "
+                             "companies often call to build their projects for them. Making it work for you: "
+                             "Landowners receive upfront payments and operating rent. Solar farms can pay rent "
+                             "checks for 20+ years. Leasing your land for a solar farm allows you and your "
+                             "family to generate income from your land, while also holding onto the property "
+                             "and income stream for future generations. Solar farms generate zero emissions "
+                             "and are non hazardous. Solar farms create jobs and tax revenue. Currently, "
+                             "there is limited availability in most areas to connect projects due to high "
+                             "levels of interest among property owners and limited capacity for solar projects "
+                             "within the power grid. Because of these factors, I encourage you to reach out to "
+                             "me ASAP to discuss this proposal. We assume the costs of development and "
+                             "permitting at our own risk. I would appreciate an opportunity to speak with you "
+                             "so that I may answer any questions and gauge your potential interest.  Please "
+                             "respond by calling my cell at (678) 898-6315 when you receive this. You may also "
+                             "text my cell phone or email me at the address below. Sincerely, Warren Kritko "
+                             "Project Developer mob: 678-898-6315 Warren.Kritko@ctecsolar.com '").getPropertyData()
+
+
+root = tk.Tk()
+app = GUI(root)
+tk.mainloop()
+
+#
+# email_client = Scribe(csv_path="/Users/collindrake/Downloads/export.csv",
+#                       client_params="Write me a letter to inquire with a landowner about buying or leasing their "
+#                                     "property for a potential solar farm. If the owner's name is not present, use their"
+#                                     " company's name instead; if the company's name is also unavailable, address the "
+#                                     "recipient with 'To the owner of (property address). Your letter should closely "
+#                                     "mirror the example provided below:"
+#                                     "Holland, Ware M2797 W Sugarberry Dr Eagle ID, 83616 December 9, 2022 Subject: "
+#                                     "Intent to Lease Land for CTEC Solar Newnan GA,30263 ; Parcel ID: 039 3006 002 & "
+#                                     "surrounding properties Dear Holland, I am contacting you today about a proposal "
+#                                     "to lease several pieces of the property you own in Newnan Ga, 30263  for a "
+#                                     "community solar project. They are currently listed under Ware Holland M "
+#                                     "Charitable Foundation. I believe there are a total of 4 parcels you have in the "
+#                                     "area that we would be interested in speaking with you about. We are currently "
+#                                     "invested in solar projects in your area and we are looking to expand.  CTEC "
+#                                     "Solar not only develops renewable-energy projects, but also constructs, "
+#                                     "operates, and maintains them. In fact, CTEC is the company the other solar "
+#                                     "companies often call to build their projects for them. Making it work for you: "
+#                                     "Landowners receive upfront payments and operating rent. Solar farms can pay rent "
+#                                     "checks for 20+ years. Leasing your land for a solar farm allows you and your "
+#                                     "family to generate income from your land, while also holding onto the property "
+#                                     "and income stream for future generations. Solar farms generate zero emissions "
+#                                     "and are non hazardous. Solar farms create jobs and tax revenue. Currently, "
+#                                     "there is limited availability in most areas to connect projects due to high "
+#                                     "levels of interest among property owners and limited capacity for solar projects "
+#                                     "within the power grid. Because of these factors, I encourage you to reach out to "
+#                                     "me ASAP to discuss this proposal. We assume the costs of development and "
+#                                     "permitting at our own risk. I would appreciate an opportunity to speak with you "
+#                                     "so that I may answer any questions and gauge your potential interest.  Please "
+#                                     "respond by calling my cell at (678) 898-6315 when you receive this. You may also "
+#                                     "text my cell phone or email me at the address below. Sincerely, Warren Kritko "
+#                                     "Project Developer mob: 678-898-6315 Warren.Kritko@ctecsolar.com '",)
+#
+# email_client.getPropertyData()
+#
+#
+#
