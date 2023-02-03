@@ -1,5 +1,6 @@
 aiohttp==3.8.3
 aiosignal==1.3.1
+altgraph==0.17.3
 async-timeout==4.0.2
 attrs==22.2.0
 beautifulsoup4==4.11.1
@@ -23,6 +24,7 @@ googleapis-common-protos==1.58.0
 httplib2==0.21.0
 idna==3.4
 lxml==4.9.2
+macholib==1.16.2
 multidict==6.0.4
 numpy==1.24.1
 oauth2client==4.1.3
@@ -36,10 +38,15 @@ pyasn1-modules==0.2.8
 pycparser==2.21
 PyDrive==1.3.1
 PyDrive2==1.15.0
+pyinstaller==5.7.0
+pyinstaller-hooks-contrib==2022.15
 pymongo==4.3.3
 pyOpenSSL==23.0.0
 pyparsing==3.0.9
 pyproject_hooks==1.0.0
+PyQt6==6.4.1
+PyQt6-Qt6==6.4.2
+PyQt6-sip==13.4.1
 python-dateutil==2.8.2
 python-docx==0.8.11
 pytz==2022.7.1
