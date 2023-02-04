@@ -20,7 +20,7 @@ class Scribe:
         self.csv_path = csv_path
         self.client_params = client_params
         openai.organization = "org-qcHPiKIimtg6ssjx0Xla5AGH"
-        openai.api_key = "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"
+        openai.api_key = "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"
 
     def getPropertyData(self):
         try:
