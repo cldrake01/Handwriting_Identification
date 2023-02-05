@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CSV to Google Drive File Converter</title>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.2.0/papaparse.min.js"></script>
+</head>
+<body>
+<h1>CSV to Google Drive File Converter</h1>
+<p>Upload a CSV file to convert it to a Google Drive file:</p>
+<input type="file" id="fileInput">
+<br><br>
+<div id="result" style="display: none;"></div>
+<script>
+    const fileInput = document.getElementById('fileInput');
+    const resultDiv = document.getElementById('result');
+
+    fileInput.addEventListener('change', () => {
+        const file = fileInput.files[0];
+        Papa.parse(file, {
+            header: true,
+            complete: (results) => {
+                sendDataToWebsocket(results.data);
+            }
+        });
+    });
+
+    const socket = new WebSocket('ws://<docker_container_ip>:8080');
+
+    function sendDataToWebsocket(data) {
+        socket.onopen = () => {
+            socket.send(JSON.stringify(data));
+        };
+    }
+
+    socket.onmessage = (event) => {
+        const fileUrl = event.data;
+        resultDiv.innerHTML = `<p>Your Google Drive file has been created: <a href="${fileUrl}" target="_blank">${fileUrl}</a></p>`;
+        resultDiv.style.display = 'block';
+    };
+</script>
+</body>
+</html>
