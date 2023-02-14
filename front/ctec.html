@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CSV to Google Drive</title>
+    <link rel="stylesheet" href="ctec.css">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="250704395003-bd7nt7jkg0lh9r0rkb2uocrk48lo117t.apps.googleusercontent.com">
+</head>
+<body>
+<div id="input">
+    <input type="file" id="csv-file" accept=".csv">
+</div>
+<!-- Load the Google API client library -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<!-- Add a button with an ID -->
+<script>
+    // Initialize the Google Sign-In API with your client ID
+    gapi.load('auth2', function() {
+        gapi.auth2.init({
+            client_id: '250704395003-bd7nt7jkg0lh9r0rkb2uocrk48lo117t'
+        });
+    });
+
+    // Add a click event listener to the button
+    document.getElementById('google-signin-btn').addEventListener('click', function() {
+        // Call the Google Sign-In API's signIn() method to initiate the sign-in process
+        gapi.auth2.getAuthInstance().signIn();
+    });
+
+    // Handle the sign-in response
+    function onSignIn(googleUser) {
+        // The user has signed in, do something with the user's information
+        var profile = googleUser.getBasicProfile();
+        console.log('User signed in: ' + profile.getName());
+    }
+</script>
+<script>
+    let fileInput = document.getElementById("csv-file");
+
+    fileInput.addEventListener("click", function () {
+        let csvFile = fileInput.files[0];
+
+        let reader = new FileReader();
+        reader.readAsText(csvFile);
+        reader.onload = function (event) {
+            let csvData = event.target.result;
+            let data = [];
+            let rows = csvData.split("\n");
+            for (let i = 0; i < rows.length; i++) {
+                data.push(rows[i].split(","));
+            }
+
+            let headers = data[0];
+            let owners = new Set();
+
+            for (let i = 1; i < data.length; i++) {
+                let row = data[i];
+
+                let name = row[headers.indexOf("Name")];
+                let company = row[headers.indexOf("Owner")];
+                let ownerName = row[headers.indexOf("Primary Owner First Name")] + " " + row[headers.indexOf("Primary Owner Last Name")];
+                let siteAddress = row[headers.indexOf("Site Address")];
+                let ownerAddress = row[headers.indexOf("Street Address")];
+                let city = row[headers.indexOf("City")];
+                let state = row[headers.indexOf("State")];
+                let zipcode = row[headers.indexOf("Zip")];
+                let county = row[headers.indexOf("County")];
+            }
+        }
+    });
+</script>
+<div class="g-signin2" id="google" data-onsuccess="onSignIn"></div>
+</body>
+</html>
