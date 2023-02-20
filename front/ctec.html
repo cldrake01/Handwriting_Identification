@@ -36,7 +36,8 @@
     }
 </script>
 <script type="module">
-    import { Configuration, OpenAIApi } from "openai";
+    import OenAIApi from 'openai';
+    // import { Configuration, OpenAIApi } from "openai";
     class property {
         prompt = "Write me a letter to inquire with a landowner about buying or leasing their property for a potential solar farm. If the owner's name is not present, use their company's name instead; if the company's name is also unavailable, address the recipient with 'To the owner of (property address). Your letter should closely mirror the example provided below:\n" +
             "\n" +
@@ -99,6 +100,7 @@
 
             for (let i = 1; i < data.length; i++) {
                 let row = data[i];
+                console.log(row);
 
                 post.name = row[headers.indexOf("Name")];
                 post.company = row[headers.indexOf("Owner")];

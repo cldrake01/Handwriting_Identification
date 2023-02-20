@@ -3,6 +3,27 @@
 }
 
 #google {
-    padding-top: 4%;
-    color: #2f0099;
+    align-self: center;
+    alignment: center;
+    align-items: center;
+    align-content: center;
+    child-align: middle;
+}
+
+#abcRioButtonContentWrapper {
+    align-self: center;
+    alignment: center;
+    align-items: center;
+    align-content: center;
+    child-align: middle;
+
+}
+
+ctec.g-signin2 {
+    text-align: center;
+    align-self: center;
+    alignment: center;
+    align-items: center;
+    align-content: center;
+    child-align: middle;
 }
