@@ -5,4 +5,4 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY . .
 
-CMD ["python", "VM/main.py"]
+CMD ["html", "index.html"]
