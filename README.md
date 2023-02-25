@@ -1,13 +1,4 @@
-# *Well, you've readme.*
+# AIHandwriting
+The git repo for the CSHS Handwriting recognition project. This project uses Pytorch. A requirements.txt might be coming soon.
 
-## Developer Consoles:
-
-* [Firebase Console](https://console.firebase.google.com/u/0/project/ctec-a97f0/overview)
-* [Google Cloud Console](https://console.cloud.google.com/apis/credentials?project=claim-handler&supportedpurview=project)
-* [Google Domains](https://domains.google.com/registrar/ctec.solar)
-
-## Important Commands!
-
-* `firebase init`
-
-* `firebase deploy --only hosting`
+Run train.py to train the model on generated data.
