@@ -12,4 +12,6 @@
 
 * `firebase deploy --only hosting`
 
+* `firebase deploy <OUR_DOMAIN_NAME>:apply --only hosting`
+
 * `pip freeze => requirements.txt`
